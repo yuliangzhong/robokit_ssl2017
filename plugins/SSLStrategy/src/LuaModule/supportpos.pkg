@@ -1,0 +1,9 @@
+$#include "SupportPos.h"
+
+class CSupportPos {
+    CSupportPos();
+    ~CSupportPos();
+
+	void generatePos(const CVisionModule* pVision,int num);
+	CGeoPoint getSupPos(const CVisionModule* pVision,int num);
+};

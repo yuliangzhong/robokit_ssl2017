@@ -1,0 +1,1 @@
+gConnection = "SmallSize"

@@ -1,0 +1,99 @@
+IF(NOT IS_SUBPROJECT)
+    set(TEMP_DIR ${PROJECT_SOURCE_DIR})
+ELSE()
+    set(TEMP_DIR ${RoboKit_SOURCE_DIR})
+ENDIF()
+
+IF(WIN32)
+    IF(CMAKE_CL_64)
+        set(CMAKE_PDB_OUTPUT_DIRECTORY ${TEMP_DIR}/bin64/pdb)
+    ELSE(CMAKE_CL_64)
+        set(CMAKE_PDB_OUTPUT_DIRECTORY ${TEMP_DIR}/bin/pdb)
+    ENDIF()
+ENDIF()
+
+IF(WIN32 AND CMAKE_CL_64)
+    set(RBK_OUTPUT_ARCHIVE_DIR ${TEMP_DIR}/bin64/lib CACHE PATH "where to put .lib and .a")
+
+    set(RBK_OUTPUT_RUNTIME_DIR ${TEMP_DIR}/bin64 CACHE PATH "where to put .exe .dll(SHARED)")
+
+    set(RBK_OUTPUT_PLUGIN_DIR ${TEMP_DIR}/bin64/plugins CACHE PATH "where to put robokit plugins")
+
+    set(RBK_OUTPUT_MOVESKILL_DIR ${TEMP_DIR}/bin64/moveskills CACHE PATH "where to put moveskills")
+
+    set(RBK_OUTPUT_LIBRARY_DIR ${TEMP_DIR}/bin64 CACHE PATH "where to put .dll(MODULE) .so .dylib")
+ELSE()
+    set(RBK_OUTPUT_ARCHIVE_DIR ${TEMP_DIR}/bin/lib CACHE PATH "where to put .lib and .a")
+
+    set(RBK_OUTPUT_RUNTIME_DIR ${TEMP_DIR}/bin CACHE PATH "where to put .exe .dll(SHARED)")
+
+    set(RBK_OUTPUT_PLUGIN_DIR ${TEMP_DIR}/bin/plugins CACHE PATH "where to put robokit plugins")
+
+    set(RBK_OUTPUT_MOVESKILL_DIR ${TEMP_DIR}/bin/moveskills CACHE PATH "where to put moveskills")
+
+    set(RBK_OUTPUT_LIBRARY_DIR ${TEMP_DIR}/bin CACHE PATH "where to put .dll(MODULE) .so .dylib")
+ENDIF()
+
+unset(TEMP_DIR)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${RBK_OUTPUT_ARCHIVE_DIR}) # .lib .a
+
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${RBK_OUTPUT_LIBRARY_DIR}) # .dll(MODULE) .so .dylib
+
+IF(RBK_MOVESKILL AND IS_SUBPROJECT)
+    IF(WIN32)
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${RBK_OUTPUT_MOVESKILL_DIR}) # moveskills
+        unset(CMAKE_ARCHIVE_OUTPUT_DIRECTORY)
+    ELSE()
+        set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${RBK_OUTPUT_MOVESKILL_DIR}) # moveskills
+    ENDIF()
+ELSEIF(RBK_PLUGIN AND IS_SUBPROJECT)
+    IF(WIN32)
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${RBK_OUTPUT_PLUGIN_DIR}) # robokit plugin
+        unset(CMAKE_ARCHIVE_OUTPUT_DIRECTORY)
+    ELSE()
+        set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${RBK_OUTPUT_PLUGIN_DIR}) # robokit plugin
+    ENDIF()
+ELSE()
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${RBK_OUTPUT_RUNTIME_DIR}) # .exe .dll(SHARED)
+ENDIF()
+
+## For each configuration (Debug, Release, MinSizeRel... and/or anything the user chooses)
+FOREACH(CONF ${CMAKE_CONFIGURATION_TYPES})
+    ## Go uppercase (DEBUG, RELEASE...)
+    STRING(TOUPPER "${CONF}" CONF)
+    set("CMAKE_ARCHIVE_OUTPUT_DIRECTORY_${CONF}" "${RBK_OUTPUT_ARCHIVE_DIR}")
+
+    set("CMAKE_LIBRARY_OUTPUT_DIRECTORY_${CONF}" "${RBK_OUTPUT_LIBRARY_DIR}")
+    IF(RBK_MOVESKILL AND IS_SUBPROJECT)
+        IF(WIN32)
+            set("CMAKE_RUNTIME_OUTPUT_DIRECTORY_${CONF}" "${RBK_OUTPUT_MOVESKILL_DIR}")
+            unset("CMAKE_ARCHIVE_OUTPUT_DIRECTORY_${CONF}")
+        ELSE()
+            set("CMAKE_LIBRARY_OUTPUT_DIRECTORY_${CONF}" "${RBK_OUTPUT_MOVESKILL_DIR}")
+        ENDIF()
+
+    ELSEIF(RBK_PLUGIN AND IS_SUBPROJECT)
+        IF(WIN32)
+            set("CMAKE_RUNTIME_OUTPUT_DIRECTORY_${CONF}" "${RBK_OUTPUT_PLUGIN_DIR}")
+            unset("CMAKE_ARCHIVE_OUTPUT_DIRECTORY_${CONF}")
+        ELSE()
+            set("CMAKE_LIBRARY_OUTPUT_DIRECTORY_${CONF}" "${RBK_OUTPUT_PLUGIN_DIR}")
+        ENDIF()
+
+    ELSE()
+        set("CMAKE_RUNTIME_OUTPUT_DIRECTORY_${CONF}" "${RBK_OUTPUT_RUNTIME_DIR}")
+    ENDIF()
+ENDFOREACH()
+
+mark_as_advanced(RBK_OUTPUT_ARCHIVE_DIR)
+mark_as_advanced(RBK_OUTPUT_MOVESKILL_DIR)
+mark_as_advanced(RBK_OUTPUT_PLUGIN_DIR)
+mark_as_advanced(RBK_OUTPUT_RUNTIME_DIR)
+mark_as_advanced(RBK_OUTPUT_LIBRARY_DIR)
+
+IF(RBK_PLUGIN AND (NOT IS_SUBPROJECT))
+    unset(RBK_OUTPUT_ARCHIVE_DIR CACHE)
+    unset(RBK_OUTPUT_PLUGIN_DIR CACHE)
+    unset(RBK_OUTPUT_MOVESKILL_DIR CACHE)
+ENDIF()

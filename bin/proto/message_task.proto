@@ -1,0 +1,57 @@
+syntax = "proto3";
+package rbk.protocol;
+import "google/protobuf/wrappers.proto";
+
+
+// 对于任务序列来说，执行的步骤一般如下所示：
+// 1、机器人先做某一件事（ServiceFunc）或某几件事   A->B->C->D->E
+// 2、机器人这一件或几件事做完后再做下一件事，有的事件必须做完以后再做下一个，有的是不需要做完就可以做下一个（bindEvent和binDelegate）
+// 3、目前服务的调用方式，一种为同步的
+// 4、任务如何算结束，由任务管理器根据不同的任务类型自动指定
+// 5、任务被外部中断时进行重载函数
+// 6、
+
+message Message_TaskParam {
+	string key = 1;
+ 	string type = 2;
+	oneof oneof_value {
+		string string_value = 3;
+		bool bool_value = 4;
+        int32 int32_value = 5;
+		uint32 uint32_value = 6;
+		int64 int64_value = 7;
+		uint64 uint64_value = 8;
+		float float_value = 9;
+		double double_value = 10;
+		bytes bytes_value = 11;
+	}
+}
+
+message Message_Task {
+	enum TaskType{
+		SPECIFIED_GOTO_POS = 1;
+		FREE_GOTO_POS = 2;
+		SET_DO = 3;
+		PANTILT_MOVE = 4;
+		ARM_MOVE = 5;
+	}
+	uint32 id = 1;             		 // 用户序列用来标识任务是处在序列中的哪个环节，task_id一样的任务可以同时执行
+	string type = 2;				 // 任务的名称
+	bool need_return = 3;			 // 是否需要结束的返回值，如果不需要就直接执行下一个task_id的任务
+	repeated TaskParam params = 4;   // 这个任务所要的参数
+}
+
+message Message_TaskList{
+	enum TaskOperation{
+		START = 1;
+		STOP = 2;
+		SUSPEND = 3;
+		RESUME = 4;
+		JUMP = 5;
+	}
+	string name = 1;
+	TaskOperation operation = 2; 
+	repeated Message_Task tasks = 3;
+	uint32 jump_id = 4;
+}
+

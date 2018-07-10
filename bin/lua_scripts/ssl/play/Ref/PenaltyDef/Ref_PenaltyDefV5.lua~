@@ -1,0 +1,86 @@
+-- Shootout Penalty Defender
+-- with speed compensation
+
+-- flag for speed compensation
+local COMPENSATION = true
+-- local needCompensation = function()
+--     return function()
+--         return abs(ball.VelY()) > abs(player.VelY())
+--     end
+-- end
+local abs = function(number)
+    return number>0 and number or -number
+end
+local p = CGeoPoint:new_local(0,300)
+local COMPENSATION_POINT = ball.refSyntYPos(p)
+local BUFFER = 30
+local Y_THRESH = 100
+
+
+gPlayTable.CreatePlay{
+
+firstState = "start",
+
+["start"] = {
+    switch=function()
+        if bufcnt(cond.isNormalStart(), 15) then
+            if abs(ball.velY()) < Y_THRESH then
+             return "compensate"
+            else 
+             return "rush"
+           end
+        elseif bufcnt(cond.isGameOn(), 15) then
+            return "exit"
+        end
+    end,
+    Leader   = task.goSpeciPos(CGeoPoint:new_local(450,-280)),
+    Special  = task.goSpeciPos(CGeoPoint:new_local(450,-260)),
+    Assister = task.goSpeciPos(CGeoPoint:new_local(450,-240)),
+    Middle   = task.goSpeciPos(CGeoPoint:new_local(450,-220)),
+    Defender = task.goSpeciPos(CGeoPoint:new_local(450,-200)),
+    Goalie   = task.goCmuRush(CGeoPoint:new_local(-450 + 9,0)),
+    match    = "{LSAMD}",
+},
+
+["compensate"] = {
+    switch = function()
+        if bufcnt(true, 20) then
+            return "rush"
+        end
+    end,
+    Leader   = task.continue(),
+    Special  = task.continue(),
+    Assister = task.continue(),
+    Middle   = task.continue(),
+    Defender = task.continue(),
+    Goalie   = task.goCmuRush(COMPENSATION_POINT,0),
+    match    = "{LSAMD}"
+},
+
+["rush"] = {
+    switch = function()
+        if bufcnt(true, 600 + BUFFER) then
+            print("TIMEOUT")
+            return "exit"
+        -- elseif bufcnt(cond.theirGoal(), 10) then
+        --     print("ENEMY GOAL")
+        --     return "exit"
+        end
+    end,
+    Leader   = task.continue(),
+    Special  = task.continue(),
+    Assister = task.continue(),
+    Middle   = task.continue(),
+    Defender = task.continue(),
+    Goalie   = task.advance(),
+    match    = "{LSAMD}"    
+},
+
+name = "Ref_PenaltyDefV5",
+applicable = {
+  exp = "a",
+  a = true
+},
+attribute = "attack",
+timeout = 99999
+}

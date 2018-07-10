@@ -1,0 +1,32 @@
+syntax = "proto3";
+package rbk.protocol;
+import "message_header.proto";
+
+message Message_LaserBeam {
+	double 	angle = 1;
+	double 	dist  = 2;
+	bool	valid = 3;
+	bool	is_virtual = 4;
+	bool	is_obstacle = 5;
+}
+
+message Message_Laser {
+	Message_Header header = 1;
+	repeated Message_LaserBeam  beams = 2;
+	uint32 cycle = 3;
+	double pos_x = 4;
+	double pos_y = 5;
+	double pos_z = 6;
+	double max_range = 7;
+	double step = 8;
+	double rotate = 9;
+}
+
+message Message_LaserPoint {
+	double x = 1;
+	double y = 2;
+}
+
+message Message_LaserPointCloud {
+	repeated Message_LaserPoint point= 1;
+}

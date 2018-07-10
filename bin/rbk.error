@@ -1,0 +1,79 @@
+{
+    // 50000-51999
+    "fatal": {
+        // --- internal
+        "50000": "internal error",            // 内部错误
+        "50001": "resource exhaustion",       // 内部资源耗尽
+        "50002": "lua error",                 // 内部 lua 调用出错
+
+
+        // --- map
+        "50100": "map parse error",           // 地图解析出错
+        "50101": "map load error",            // 无法加载地图
+        "50102": "map is too large",          // 地图过大
+        "50103": "map is empty",              // 地图数据为空
+        "50104": "map meta error",            // 地图元数据错误
+        "50105": "map resolution is illegal", // 地图分辨率非法
+        "50106": "map format invalid",         // 地图格式非法
+
+        // --- move skills
+        "50200": "move skills path error",    // 错误的 moveskills路径
+        "50201": "move skills init error",    // moveskills 初始化错误
+        "50202": "move skills register error" // moveskills 注册出错
+    },
+    // 52000-53999
+    "error": {
+        // --- device
+        "52100": "laser error",               // 失去与激光设备的通讯
+        "52101": "laser data invalid",        // 所有激光数据无效
+        "52110": "imu error",                 // 陀螺仪故障
+        "52111": "motor driver connection error",//驱动器连接故障
+        "52112": "ultrasonic error",        // 超声波雷达故障
+        "52113": "RFID reader error",         // RFID读取故障
+        "52114": "magnetic 0 tracker error",      // 磁轨导航传感器故障
+        "52115": "magnetic 1 tracker error",      // 磁轨导航传感器故障
+        "52116": "controller net down",       // 控制器网络断开
+        "52117": "controller link down",      // 控制器连接断开
+        "52118": "subsystem error",           // 子系统连接故障
+        "52119": "low task frequency",         // 单片机任务频率过低
+
+        "52130": "motor GVDD over voltage",     //电机GVDD过压
+        "52131": "motor FET over current",      //电机桥臂过流
+        "52132": "motor over temperature",       //电机驱动器过热
+        "52133": "motor VDD under voltege",     //电机电源欠压
+        "52135": "motor error see log",         //电机其他需要看log的错误
+
+        // --- navigation
+        "52200": "can not find bezier curve",           // 固定路径导航路径规划失败
+        "52201": "can not find target id",              // 找不到指定的地图中的站点
+        "52202": "path plan failed",                    // 自由导航路径规划失败
+        "52203": "unsupported skill",                   // 不支持的move skill
+        "52204": "charge failed and not set prepoint",  // 充电失败但未设置前置点
+        "52210": "can not find patrol route",           // 找不到巡检线路
+
+        // --- localization
+        "52300": "too low confidence of localization",  // 定位的置信度太低
+        "52301": ""
+    },
+    // 54000-55999
+    "warning": {
+        // --- device
+        "54000": "joystick error",            // 手柄连接出错
+        "54001": "battery error",             // 电池通讯出错
+        "54002": "temperature sensor error",  // 温度传感器出错
+        "54003": "motor overspeed",          // 电机超速
+        "54004": "motor emergency stop"     //电机被拍急停
+
+    },
+    // 56000-57999
+    "notice": {
+        "56000": "odometer jump",              // 里程数据发生了一次跳跃
+
+        "57000": "file system error",          // 文件相关操作出错
+        "57001": "param system error",         // 参数相关操作出错
+        "57002": "database error",             // 数据库相关操作出错
+        "57003": "play audio error" ,          // 音频播放出错
+        "57004": "gyro calibration completed", // 陀螺仪标零完成
+        "57005": "json conversion error"       // json 转换出错
+    }
+}

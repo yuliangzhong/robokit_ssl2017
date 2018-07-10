@@ -1,0 +1,29 @@
+syntax = "proto3";
+package rbk.protocol;
+
+message Message_RFIDNode{
+	enum Mode{
+		None = 0;
+		Stop = 1;
+		Forward = 2;
+		Backward = 3;
+		Slowdown = 4;
+		Speedup = 5;
+		Turnleft = 6;
+		Turnright = 7;
+	}
+	enum Response{
+		ResNone = 0;
+		ResForward = 1;
+		ResBackward = 2;
+		ResBoth = 3;
+	}
+    uint32 id = 1;
+    Mode mode = 2;
+    uint32 count = 3;
+    Response response = 4;
+}
+
+message Message_RFID{
+    repeated Message_RFIDNode rfid_nodes = 1;
+}

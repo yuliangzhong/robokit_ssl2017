@@ -1,0 +1,27 @@
+syntax = "proto3";
+package rbk.protocol;
+
+message Ball{
+	bool ball_found = 1;
+	float x = 2;
+	float y = 3;
+	bool image_valid = 4;
+	float image_x = 5;
+	float image_y = 6;
+}
+
+message Robot{
+	uint32 robot_id 	= 1;
+	float x 			= 2;
+	float y 			= 3;
+	float orientation 	= 4;
+	bool robot_found	= 5;
+}
+
+message SRC_RawVision{
+	uint32 frame_number 			= 1;
+	uint32 mode 					= 2;
+	repeated Robot robots_yellow	= 3;
+	repeated Robot robots_blue		= 4;
+	Ball ball 						= 5;
+}

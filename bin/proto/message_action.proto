@@ -1,0 +1,10 @@
+syntax = "proto3";
+package rbk.protocol;
+
+message Message_Action{
+    string type = 1;
+    string cmd = 2;
+    double value1 = 3;
+    double value2 = 4;
+    double value3 = 5;
+}
