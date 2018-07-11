@@ -1,12 +1,12 @@
-IS_TEST_MODE = true
+IS_TEST_MODE = false
 IS_SIMULATION = CGetIsSimulation()
 USE_SWITCH = false
 USE_AUTO_REFEREE = false
 OPPONENT_NAME = "other"
 
 gStateFileNameString = string.format(os.date("%Y%m%d%H%M"))
-gTestPlay = "TestSkillPlay"--"TestSkillPlay"
-gNormalPlay = "NormalPlayMark"
+gTestPlay = "TestAssPass"--"TestSkillPlay"
+gNormalPlay = "Nor_MorePass"
 gSwitchNum = {
 	["normal"]  = 6,
 	["backup"]  = 7,

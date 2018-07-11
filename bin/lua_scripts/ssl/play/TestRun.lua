@@ -40,7 +40,6 @@ firstState = "run1",
 		if player.toTargetDist("Kicker") < 20 then
 			return "run2"
 		end
-
 	end,
 	Kicker  = task.goCmuRush(TargetPos1, 0),
 	match = ""
@@ -48,7 +47,7 @@ firstState = "run1",
 ["run2"] = {
 	switch = function ()
 		if player.toTargetDist("Kicker") < 20 then
-			return "run1";
+			return "run1"
 		end
 	end,
 	Kicker  = task.goCmuRush(TargetPos2, 0),

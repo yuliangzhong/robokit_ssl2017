@@ -40,7 +40,7 @@ firstState = "Pause",
 ["Wait"] = {
 	switch = function ()
 		if bufcnt(true,100) then
-			return "Psuse"
+			return "Pause"
 		end
 	end,
 	Kicker =  task.stop(),

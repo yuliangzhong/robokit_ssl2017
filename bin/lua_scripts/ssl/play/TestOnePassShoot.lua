@@ -1,3 +1,4 @@
+--it can test the speed of the ball by the way
 local targetdierction
 local realdirection = 0
 local ballspeed
