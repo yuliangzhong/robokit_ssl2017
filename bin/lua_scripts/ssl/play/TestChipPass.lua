@@ -6,7 +6,7 @@ firstState = "goto",
 
 ["goto"] = {
 	switch = function ()
-		print("goto")
+		--print("goto")
 		if bufcnt(player.toTargetDist("Kicker")<30,  "slow")then
 			return "pass"
 		end
@@ -18,7 +18,7 @@ firstState = "goto",
 
 ["pass"] = {
 	switch = function ()
-		print("pass")
+		--print("pass")
 		if bufcnt(player.kickBall("Tier"), "fast")then			
 			return "kick"
 		end
@@ -30,7 +30,7 @@ firstState = "goto",
 
 ["kick"] = {
     switch = function ()
-    	print("kick")
+    	--print("kick")
 		if bufcnt(player.kickBall("Kicker"), 1) then						
 			return "goto"																			
 		end	

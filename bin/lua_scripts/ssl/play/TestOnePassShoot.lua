@@ -40,7 +40,7 @@ firstState = "wait",
 		end
 	end,		
 	Kicker = task.goCmuRush(pKick),
-	Tier   = task.goAndTurnKick(pass_pos,200),
+	Tier   = task.goAndTurnKick(pass_pos,500),
 	--Goalie = task.goSimplePos(pTarget,pi),
 	match  = ""
 },	

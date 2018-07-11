@@ -10,7 +10,8 @@ firstState = "goto",
 
 ["goto"] = {
 	switch = function ()
-		if bufcnt(player.toTargetDist("Tier")<30,  150)then
+		print("goto")
+		if bufcnt(player.toTargetDist("Tier")<30,  150,300)then
 		   flag = true
 			return "pass"
 		end
@@ -22,6 +23,7 @@ firstState = "goto",
 
 ["pass"] = {
 	switch = function ()
+	print("pass")
 		if bufcnt(player.kickBall("Tier") or player.isBallPassed("Tier","Kicker"), "fast")then			
 			return "fix"
 		end
@@ -33,6 +35,7 @@ firstState = "goto",
 
 ["fix"] = {
 	switch = function ()
+	print("fix")
 		if bufcnt(true, 20) then			
 			return "kick"
 		end
@@ -44,6 +47,7 @@ firstState = "goto",
 
 ["kick"] = {
     switch = function ()
+    print("kick")
 		if ball.pos():dist(player.pos("Kicker"))<50 and flag == true then
 			flag = false		
 			ballspeed = ball.velMod()
@@ -55,13 +59,14 @@ firstState = "goto",
 			return "goto"																			
 		end
 	end,		
-	Kicker = task.touch(CGeoPoint:new_local(150,200)),	
+	Kicker = task.touch(CGeoPoint:new_local(450,0)),	
 	Tier = task.stop(),	
 	match = ""
 },
 
 ["recordfile"] = { 
  switch = function ()
+ print("recordfile")
 		if bufcnt(ball.posX()>200, 1) then					
 				realdirection = (Utils.Normalize(balldirection + math.pi)- ball.velDir())*180/math.pi
 				local recordfile = io.open("onepassshoot.txt","a")

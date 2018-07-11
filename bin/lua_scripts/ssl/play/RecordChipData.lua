@@ -15,7 +15,7 @@ firstState = "getball",
 
 ["pause"] = {
 	switch = function ()
-		if bufcnt(false,1,300) then
+		if bufcnt(false,1,180) then
 			return "chip"
 		end
 	

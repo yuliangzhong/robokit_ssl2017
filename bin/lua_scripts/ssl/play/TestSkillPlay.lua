@@ -1,3 +1,4 @@
+local pos = ball.refAntiYPos(CGeoPoint:new_local(300,160))
 
 gPlayTable.CreatePlay{
 
@@ -6,7 +7,7 @@ firstState = "start",
 	switch = function ()
 	end,
 	Goalie = task.goalie(),
-	-- Kicker = task.singleBack(),
+	Kicker = task.goSimplePos(pos),--第二个参数是射门力度！
 	match  = ""
 },
 

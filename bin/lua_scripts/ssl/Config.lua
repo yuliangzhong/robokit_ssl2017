@@ -5,7 +5,7 @@ USE_AUTO_REFEREE = false
 OPPONENT_NAME = "other"
 
 gStateFileNameString = string.format(os.date("%Y%m%d%H%M"))
-gTestPlay = "TestAssPass"--"TestSkillPlay"
+gTestPlay = "TestForAngle"--"TestSkillPlay"
 gNormalPlay = "Nor_MorePass"
 gSwitchNum = {
 	["normal"]  = 6,
@@ -267,5 +267,6 @@ gTestPlayTable = {
 	"TestTurnPassAndShoot",
 	"OpenSpeedTest",
 	"TestOnePassShootV1",
-	"TestDefence"
+	"TestDefence",
+	"TestGoalie"
 }

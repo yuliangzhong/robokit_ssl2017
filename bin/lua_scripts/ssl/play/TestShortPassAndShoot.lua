@@ -1,5 +1,8 @@
 -- 两车站位，向后传球，一传一射
 -- by zhyaic 2013.6.12
+--Caution!！！！！！！！！！！！！！！！！
+-- ball.posX()<160 适用
+--zyl 20180711
 local BALL_POSX
 local BALL_POSY
 local BALL_ANTI
@@ -35,8 +38,8 @@ firstState = "startball",
 			return "round"
 		end
 	end,
-	Kicker = task.goBackBall(CGeoPoint:new_local(300,0),25),
-	Leader   = task.goBackBall(0,50),
+	Kicker = task.goBackBall(CGeoPoint:new_local(300,0),50),
+	Leader   = task.goBackBall(0,100),
 	match    = "{L}"
 },
 

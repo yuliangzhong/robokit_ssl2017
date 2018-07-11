@@ -65,7 +65,7 @@ firstState = "testState1",
 	end,
 	
 	Defender = task.stop(),
-	Kicker   = task.shoot(),
+	Kicker   = task.touch(),
 	match    = "{D}"
 },
 name = "TestCirleAndKick",

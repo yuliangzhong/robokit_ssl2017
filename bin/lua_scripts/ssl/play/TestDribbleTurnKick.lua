@@ -30,11 +30,11 @@ firstState = "prepare",
 	switch = function()
 		initDir=player.dir("Leader")
 		print("hello",initDir-ball.toTheirGoalDir())
-		if  bufcnt(true,150) then
+		if  bufcnt(true,75) then
 			return "testState2"
 		end
 	end,
-	Leader =task.slowGetBall(3.14),
+	Leader =task.slowGetBall(dir.dirForDribbleTurnKick),
 	match = "[L]"
 },
 

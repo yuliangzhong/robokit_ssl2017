@@ -27,7 +27,7 @@ gPlayTable.CreatePlay{
 	print("prepareBall")
 		if  bufcnt(player.toTargetDist("Leader")<20 and
 			player.toTargetDist("Assister")<20 and
-			player.toTargetDist("Special")<20 ,"slow") then
+			player.toTargetDist("Special")<20 ,"slow",180) then
 			return "firstKick"
 		end
 	end,

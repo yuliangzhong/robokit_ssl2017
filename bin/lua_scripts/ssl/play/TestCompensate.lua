@@ -62,7 +62,7 @@ firstState = "goto",
 		--debugEngine:gui_debug_msg(CGeoPoint:new_local(70,0),string.format("%s = %f","realdirection",realdirection),3)
 		--debugEngine:gui_debug_msg(CGeoPoint:new_local(110,0),string.format("%s = %f","targetdirection",targetdirection),3)
 	end,		
-	Kicker = task.touch(CGeoPoint:new_local(302,-20)),	
+	Kicker = task.touch(player.pos("Goalie")),	
 	match = ""
 },
 
