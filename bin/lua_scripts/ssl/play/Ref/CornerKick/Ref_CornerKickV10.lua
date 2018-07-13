@@ -84,7 +84,7 @@ gPlayTable.CreatePlay{
         return "fix"
       end
     end,
-    Assister = task.chipPass(CHIP_POS, 5555+25),
+    Assister = task.chipPass(CHIP_POS, 100),
     Leader   = task.continue(),
     Middle   = task.leftBack(),
     Special  = task.rightBack(),

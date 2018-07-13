@@ -25,6 +25,7 @@ firstState = "startBall",
 
 ["startBall"] = {
   switch = function ()
+  print("startBall")
     if bufcnt(player.toTargetDist("Leader") < 30 and
           player.toTargetDist("Special") < 30 and
           player.toTargetDist("Middle") < 30, "normal", 180) then
@@ -42,6 +43,7 @@ firstState = "startBall",
 
 ["readyRush"] = {
   switch = function ()
+  print("readyRush")
     if bufcnt(true, 60) then
       return "waitRobot"
     end
@@ -57,6 +59,7 @@ firstState = "startBall",
 
 ["waitRobot"] = {
   switch = function ()
+  print("waitRobot")
     if bufcnt(player.toTargetDist("Middle") < 40, "fast", 90) then
       return "rushBall"
     end
@@ -72,6 +75,7 @@ firstState = "startBall",
 
 ["rushBall"] = {
   switch = function ()
+  print("rushBall")
     if bufcnt(player.kickBall("Middle"), "fast", 90) then
       return "exit"
     end

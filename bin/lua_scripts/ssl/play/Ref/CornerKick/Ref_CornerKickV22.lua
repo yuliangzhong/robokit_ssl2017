@@ -94,7 +94,7 @@ gPlayTable.CreatePlay{
         end
       end
     end,
-    Assister = USE_CHIP and task.chipPass(PASS_POS(), 5555+90) or task.goAndTurnKick(PASS_POS(), 500),
+    Assister = USE_CHIP and task.chipPass(PASS_POS(), 300) or task.goAndTurnKick(PASS_POS(), 500),
     Leader   = task.goCmuRush(THIRD_POS_1, _, _, flag.allow_dss),
     Special  = task.goCmuRush(THIRD_POS_2, _, _, flag.allow_dss),
     Middle   = task.goCmuRush(THIRD_POS_3, _, _, flag.allow_dss),

@@ -67,7 +67,7 @@ firstState = "gotoState",
 			return "fixGoto"
 		end
 	end,
-	Assister = task.chipPass(CHIP_POS, 5555+90),
+	Assister = task.chipPass(CHIP_POS, 300),
 	Leader   = RUN_BACK_POS,
 	Special  = RUN_LEFT_POS,
 	Middle   = RUN_RIGHT_POS,

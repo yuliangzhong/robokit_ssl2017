@@ -72,7 +72,7 @@ firstState = "start",
 		end
 	end,
 	Defender = task.goCmuRush(ANTIPOS_3),
-	Assister = task.chipPass(CHIP_POS, 5555+70),
+	Assister = task.chipPass(CHIP_POS, 250),
 	Special  = task.goCmuRush(SYNT_POS),
 	Middle   = task.goCmuRush(ANTI_FAKE_POS),
 	Leader   = task.singleBack(),

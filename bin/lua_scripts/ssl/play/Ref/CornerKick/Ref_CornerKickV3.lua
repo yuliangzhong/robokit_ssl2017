@@ -75,7 +75,7 @@ firstState = "readyState",
 			return "exit"
 		end
 	end,
-	Assister = task.chipPass(CHIP_POS, 5555+90),
+	Assister = task.chipPass(CHIP_POS, 300),
 	Leader   = task.goCmuRush(END_POS1),
 	Special  = task.goCmuRush(END_POS2),
 	Middle   = task.goSimplePos(END_POS3),

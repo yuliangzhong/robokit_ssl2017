@@ -95,7 +95,7 @@ gPlayTable.CreatePlay{
         return "waitBall"
       end
     end,
-    Assister = task.goAndTurnKick(PASS_POS, 5555+25),
+    Assister = task.goAndTurnKick(PASS_POS, 200),
     Leader   = task.continue(),
     Special  = task.continue(),
     Middle   = task.continue(),

@@ -77,7 +77,7 @@ firstState = "start",
       return "exit"
     end
   end,
-  Assister = task.chipPass(CGeoPoint:new_local(360, 120), 5555+40),
+  Assister = task.chipPass(CGeoPoint:new_local(360, 120),200),
   Special  = task.goSimplePos(Block_POS_2),
   Leader   = task.goSimplePos(Block_POS_3),
   Middle   = task.goTouchPos(RUN_POS_2),

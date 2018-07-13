@@ -114,7 +114,7 @@ firstState = "start",
       return "exit"
     end
   end,
-  Assister = task.chipPass(CHIP_POS, 5555+70),
+  Assister = task.chipPass(CHIP_POS, 300),
   Defender = task.goCmuRush(ANTIPOS_3),
   Special  = task.goCmuRush(BALL_CHANGE_POS),
   Middle   = task.rightBack(),

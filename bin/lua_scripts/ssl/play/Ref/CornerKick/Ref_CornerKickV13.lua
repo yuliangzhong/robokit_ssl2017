@@ -60,7 +60,7 @@ firstState = "getball",
       return "shoot"
     end
   end,
-  Assister = USE_CHIP and task.goAndTurnKickQuick(PASS_POS, 5555+30, "chip") or task.goAndTurnKickByGetBall(PASS_POS, 5555+25),
+  Assister = USE_CHIP and task.goAndTurnKickQuick(PASS_POS, 150, "chip") or task.goAndTurnKickByGetBall(PASS_POS, 5555+25),
   Special  = task.continue(),
   Leader   = task.continue(),
   Middle   = task.continue(),

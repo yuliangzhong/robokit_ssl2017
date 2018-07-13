@@ -52,7 +52,7 @@ firstState = "prepare",
 			return "pass"
 		end
 	end,
-	Leader   = task.receivePass("Assister",500),
+	Leader   = task.receivePass("Assister",100),
 	Assister = task.goCmuRush(getPassPos,player.toPlayerDir("Leader")),
 	Special  = task.goCmuRush(getNextPassPos,player.toPlayerDir("Assister")),
 	Middle	 = task.goCmuRush(getLastPassPos,player.toPlayerDir("Middle")),

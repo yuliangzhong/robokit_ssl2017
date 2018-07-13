@@ -83,7 +83,7 @@ firstState = "State1",
 			return "Receive"
 		end
 	end,
-	Assister = USE_CHIP and task.chipPass(RECEIVE_POS, 5555+40, false) or task.goAndTurnKick(RECEIVE_GO_POS, 560),
+	Assister = USE_CHIP and task.chipPass(RECEIVE_POS, 5555+10, false) or task.goAndTurnKick(RECEIVE_GO_POS, 560),
 	Leader   = task.goCmuRush(RECEIVE_GO_POS, dir.playerToBall),
 	Special  = task.goCmuRush(RUN_POS_STATE_4_2),
 	Middle   = task.leftBack(),

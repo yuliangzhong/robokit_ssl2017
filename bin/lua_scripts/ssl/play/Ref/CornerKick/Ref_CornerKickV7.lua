@@ -64,7 +64,7 @@ gPlayTable.CreatePlay{
         return "waitBall"
       end
     end,
-    Assister = USE_CHIP and task.chipPass(PASS_POS, 5555+90) or task.goAndTurnKick(PASS_POS, 450),
+    Assister = USE_CHIP and task.chipPass(PASS_POS, 250) or task.goAndTurnKick(PASS_POS, 450),
     Leader   = task.goCmuRush(SYNT_POS_2, _, 600, flag.allow_dss),
     Special  = task.goCmuRush(SYNT_POS_1, _, 600, flag.allow_dss),
     Middle   = task.goCmuRush(ANTI_POS_2, _, 600, flag.allow_dss),

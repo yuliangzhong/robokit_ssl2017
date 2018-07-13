@@ -84,7 +84,7 @@ gPlayTable.CreatePlay{
         return "fixgoto"
       end
     end,
-    Assister = task.goAndTurnKickByGetBall(PASS_POS, 5555+25),
+    Assister = task.goAndTurnKickByGetBall(PASS_POS, 300),
     Leader   = task.goCmuRush(SHOOT_POS, _, 300),
     Special  = task.leftBack(),
     Middle   = task.rightBack(),
