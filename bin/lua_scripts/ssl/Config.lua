@@ -14,10 +14,10 @@ gSwitchNum = {
 }
 
 gRoleFixNum = {
-	["Kicker"]   = {6},
+	["Kicker"]   = {5},
 	["Goalie"]   = {1},
 	["Tier"]	 = {3},
-	["Receiver"] = {4}
+	["Receiver"] = {6}
 }
 
 -- 用来进行定位球的保持

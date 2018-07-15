@@ -218,7 +218,7 @@ unsigned int SSLRadio::flat(unsigned int num,double kick){
 	int shootpower = 0;
 	shootpower = (int)(0.00001*P.A*kick*kick + P.B*kick + P.C);
 	if (kick >= 9999) {
-		return 127;
+		return P.MAX;
 	}
 
 	if (fabs(kick - 8888) < 0.5) {

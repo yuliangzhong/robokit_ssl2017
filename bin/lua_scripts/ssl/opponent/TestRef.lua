@@ -1,9 +1,9 @@
 gOppoConfig = {
 ---------------------------------play--------------------------
-	CornerKick = {40},
-	FrontKick  = {15},
-	MiddleKick = {7},
-	BackKick    = {7},
+	CornerKick = {4,10,11,20},
+	FrontKick  = {1,6},
+	MiddleKick = {3,4},
+	BackKick    = {3,10},
 	KickOff		= "Ref_KickOffV4",
 
 	CornerDef   = "Ref_CornerDefV5",
